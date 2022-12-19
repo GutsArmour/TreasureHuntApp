@@ -55,9 +55,12 @@ public class Register extends AppCompatActivity {
                                 Toast.makeText(Register.this, "Email is already registered", Toast.LENGTH_SHORT).show();
                             }
                             else {
+                                int pointsTxt;
+                                pointsTxt = 0;
                                 databaseReference.child("users").child(usernameTxt).child("fullname").setValue(fullnameTxt);
                                 databaseReference.child("users").child(usernameTxt).child("email").setValue(emailTxt);
                                 databaseReference.child("users").child(usernameTxt).child("password").setValue(passwordTxt);
+                                databaseReference.child("users").child(usernameTxt).child("points").setValue(pointsTxt);
 
                                 Toast.makeText(Register.this, "User Registered successfully", Toast.LENGTH_SHORT).show();
                                 finish();
