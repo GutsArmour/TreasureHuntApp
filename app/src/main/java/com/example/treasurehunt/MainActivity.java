@@ -37,16 +37,25 @@ import java.net.HttpCookie;
 
 public class MainActivity extends AppCompatActivity {
 
-    Button button;
     DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReferenceFromUrl("https://treasurehunt-bb6e9-default-rtdb.firebaseio.com/");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        Button button;
         button = findViewById(R.id.button);
         button.setOnClickListener(v -> {
             scanQR();
+        });
+
+        Button leaderboardMainBtn = findViewById(R.id.leaderboardMainBtn);
+        leaderboardMainBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this, Leaderboard.class));
+            }
         });
     }
 
