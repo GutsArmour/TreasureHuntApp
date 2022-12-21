@@ -18,6 +18,8 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 
 public class Leaderboard extends AppCompatActivity {
 
@@ -39,6 +41,16 @@ public class Leaderboard extends AppCompatActivity {
                 for (DataSnapshot user : snapshot.getChildren()) {
                     userScores = user.getValue(UserScores.class);
                     list.add(user.getKey() + ", " +  userScores.getPoints().toString());
+                    Collections.sort(list, new Comparator<String>() {
+                        @Override
+                        public int compare(String o1, String o2) {
+                            // Split the strings on the comma separator and extract the points from the second part
+                            int points1 = Integer.parseInt(o1.split(", ")[1]);
+                            int points2 = Integer.parseInt(o2.split(", ")[1]);
+                            return points2 - points1;
+                        }
+                    });
+                    adapter.notifyDataSetChanged();
                 }
                 ListView.setAdapter(adapter);
             }
