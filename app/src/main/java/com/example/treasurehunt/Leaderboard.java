@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ListView;
 
 import androidx.annotation.NonNull;
@@ -60,7 +61,7 @@ public class Leaderboard extends AppCompatActivity {
 
             }
         });
-        Button leaderboardBtn = findViewById(R.id.leaderboardBtn);
+        ImageButton leaderboardBtn = findViewById(R.id.leaderboardBtn);
         leaderboardBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

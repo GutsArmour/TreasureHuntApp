@@ -16,6 +16,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.auth.FirebaseAuth;
 
 import android.Manifest;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -23,9 +24,15 @@ import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.PopupMenu;
+import android.widget.Toast;
 
 import com.google.firebase.database.ValueEventListener;
 import com.journeyapps.barcodescanner.CaptureActivity;
@@ -50,13 +57,43 @@ public class MainActivity extends AppCompatActivity {
             scanQR();
         });
 
-        Button leaderboardMainBtn = findViewById(R.id.leaderboardMainBtn);
+        ImageButton leaderboardMainBtn = findViewById(R.id.leaderboardMainBtn);
         leaderboardMainBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(MainActivity.this, Leaderboard.class));
             }
         });
+        ImageButton settingsBtn = findViewById(R.id.settingsBtn);
+        settingsBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                PopupMenu settingsMenu = new PopupMenu(MainActivity.this, v);
+                MenuInflater inflater = getMenuInflater();
+                inflater.inflate(R.menu.menu, settingsMenu.getMenu());
+                settingsMenu.show();
+            }
+        });
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.tutorialScreen:
+                Toast.makeText(this, "Tutorial screen", Toast.LENGTH_SHORT).show();
+                return true;
+            case R.id.scanHistoryScreen:
+                Toast.makeText(this, "Scan History screen", Toast.LENGTH_SHORT).show();
+                return true;
+            case R.id.contactScreen:
+                Toast.makeText(this, "Contact screen", Toast.LENGTH_SHORT).show();
+                return true;
+            case R.id.darkModeBtn:
+                Toast.makeText(this, "Dark Mode option", Toast.LENGTH_SHORT).show();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 
     private void scanQR() {
