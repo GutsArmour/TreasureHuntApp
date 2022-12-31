@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">TreasureHunt</string>
+    <string name="title_activity_maps">MapsActivity</string>
+    <string name="tutorial">Tutorial</string>
+    <string name="scan_history">Scan History</string>
+    <string name="contact">Contact</string>
+    <string name="dark_light_mode">Dark/Light Mode</string>
 </resources>

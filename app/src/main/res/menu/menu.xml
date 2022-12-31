@@ -3,15 +3,15 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item android:id="@+id/tutorialScreen"
-        android:title="Tutorial"
+        android:title="@string/tutorial"
         app:showAsAction="never"/>
     <item android:id="@+id/scanHistoryScreen"
-        android:title="Scan History"
+        android:title="@string/scan_history"
         app:showAsAction="never"/>
     <item android:id="@+id/contactScreen"
-        android:title="Contact"
+        android:title="@string/contact"
         app:showAsAction="never"/>
     <item android:id="@+id/darkModeBtn"
-        android:title="Dark/Light Mode"
+        android:title="@string/dark_light_mode"
         app:showAsAction="never"/>
 </menu>
