@@ -45,8 +45,7 @@ public class ScanHistory extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for (DataSnapshot childSnapshot : snapshot.getChildren()) {
                     scanTimeLocation = childSnapshot.getValue(ScanTimeLocation.class);
-                    String scanLocation  = (scanTimeLocation.getLongitude() + "," + scanTimeLocation.getLatitude());
-                    scanTimeLocationList.add(scanTimeLocation.getTimestamp().toString() + "," + scanLocation);
+                    scanTimeLocationList.add(scanTimeLocation.getTimestamp().toString() + "," + scanTimeLocation.getLatitude() + "," + scanTimeLocation.getLongitude());
 //                    Long scanTime = childSnapshot.child("timestamp").getValue(Long.class);
 //                    Double scanLongitude = childSnapshot.child("longitude").getValue(Double.class);
 //                    Double scanLatitude = childSnapshot.child("latitude").getValue(Double.class);
@@ -54,6 +53,7 @@ public class ScanHistory extends AppCompatActivity {
                     adapter.notifyDataSetChanged();
                 }
                 ListView.setAdapter(adapter);
+
                 SupportMapFragment mapFragment = SupportMapFragment.newInstance();
                 getSupportFragmentManager().beginTransaction().add(R.id.mapContainer, mapFragment).commit();
 
@@ -63,8 +63,8 @@ public class ScanHistory extends AppCompatActivity {
                         for (String scanTimeLocation : scanTimeLocationList) {
                             String[] parts = scanTimeLocation.split(",");
                             String scanTime = parts[0];
-                            double scanLongitude = Double.parseDouble(parts[1]);
-                            double scanLatitude = Double.parseDouble(parts[2]);
+                            double scanLatitude = Double.parseDouble(parts[1]);
+                            double scanLongitude = Double.parseDouble(parts[2]);
 
                             LatLng scanLocation = new LatLng(scanLatitude, scanLongitude);
                             googleMap.addMarker(new MarkerOptions().position(scanLocation).title(scanTime));
