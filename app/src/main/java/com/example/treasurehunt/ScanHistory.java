@@ -9,9 +9,11 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.internal.ICameraUpdateFactoryDelegate;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.firebase.database.DataSnapshot;
@@ -55,7 +57,7 @@ public class ScanHistory extends AppCompatActivity {
                 ListView.setAdapter(adapter);
 
                 SupportMapFragment mapFragment = SupportMapFragment.newInstance();
-                getSupportFragmentManager().beginTransaction().add(R.id.mapContainer, mapFragment).commit();
+                getSupportFragmentManager().beginTransaction().replace(R.id.mapContainer, mapFragment).commit();
 
                 mapFragment.getMapAsync(new OnMapReadyCallback() {
                     @Override
@@ -66,8 +68,11 @@ public class ScanHistory extends AppCompatActivity {
                             double scanLatitude = Double.parseDouble(parts[1]);
                             double scanLongitude = Double.parseDouble(parts[2]);
 
+                            float zoom = 18.0f;
                             LatLng scanLocation = new LatLng(scanLatitude, scanLongitude);
+
                             googleMap.addMarker(new MarkerOptions().position(scanLocation).title(scanTime));
+                            googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(scanLocation, zoom));
                         }
                     }
                 });

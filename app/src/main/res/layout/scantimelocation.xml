@@ -5,12 +5,12 @@
 
     <TextView
         android:id="@+id/scanTimeLocation"
-        android:textSize="30sp"
+        android:textSize="0sp"
         android:textStyle="bold"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
 
-    //<fragment
+    <FrameLayout
         android:id="@+id/mapContainer"
         android:name="com.google.android.gms.maps.SupportMapFragment"
         android:layout_width="match_parent"
