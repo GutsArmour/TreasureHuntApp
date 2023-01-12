@@ -3,10 +3,21 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context="com.example.treasurehunt.Leaderboard">
+    tools:context="com.example.treasurehunt.Leaderboard"
+    android:background="@color/white">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="165dp"
+        android:gravity="center"
+        android:text="Treasure Hunt Leaderboard"
+        android:textColor="#7f03fc"
+        android:textSize="26sp"
+        android:textStyle="bold"
+        android:layout_marginTop="10dp"/>
 
     <ListView
-        android:layout_marginTop="35dp"
+        android:layout_marginTop="110dp"
         android:id="@+id/leaderboard"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -22,6 +33,7 @@
         android:layout_marginStart="0dp"
         android:layout_marginTop="0dp"
         android:scaleType="fitCenter"
-        android:src="@drawable/leaderboard_icon" />
+        android:src="@drawable/leaderboard_icon"
+        android:background="@color/zxing_transparent"/>
 
 </RelativeLayout>

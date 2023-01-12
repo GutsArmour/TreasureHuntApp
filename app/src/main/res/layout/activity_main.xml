@@ -5,7 +5,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    android:background="@color/white">
 
     <Button
         android:id="@+id/button"
@@ -23,17 +24,19 @@
         android:layout_marginStart="0dp"
         android:layout_marginTop="0dp"
         android:scaleType="fitCenter"
-        android:src="@drawable/leaderboard_icon" />
+        android:src="@drawable/leaderboard_icon"
+        android:background="@color/zxing_transparent"/>
 
     <ImageButton
         android:id="@+id/settingsBtn"
         android:layout_width="85dp"
-        android:layout_height="88dp"
+        android:layout_height="85dp"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:layout_marginTop="0dp"
         android:layout_marginEnd="0dp"
         android:scaleType="fitCenter"
-        android:src="@drawable/settings_icon" />
+        android:src="@drawable/settings_icon"
+        android:background="@color/zxing_transparent"/>
 
 </RelativeLayout>

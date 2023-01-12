@@ -3,10 +3,20 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context="com.example.treasurehunt.ScanHistory">
+    tools:context="com.example.treasurehunt.ScanHistory"
+    android:background="@color/white">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="165dp"
+        android:gravity="center"
+        android:text="Scan History Locations"
+        android:textColor="#7f03fc"
+        android:textSize="26sp"
+        android:textStyle="bold"/>
 
     <ListView
-        android:layout_marginTop="35dp"
+        android:layout_marginTop="150dp"
         android:id="@+id/scanHistory"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
