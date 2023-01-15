@@ -1,4 +1,5 @@
 package com.example.treasurehunt;
 
-public class Contact {
+public class Contact extends BaseAppCompatActivity{
+
 }

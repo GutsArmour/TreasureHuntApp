@@ -1,4 +1,4 @@
 package com.example.treasurehunt;
 
-public class Tutorial {
+public class Tutorial extends BaseAppCompatActivity{
 }

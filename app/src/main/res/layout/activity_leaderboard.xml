@@ -3,14 +3,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context="com.example.treasurehunt.Leaderboard"
-    android:background="@color/white">
+    tools:context="com.example.treasurehunt.Leaderboard">
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="165dp"
         android:gravity="center"
-        android:text="Treasure Hunt Leaderboard"
+        android:text="Leaderboard"
         android:textColor="#7f03fc"
         android:textSize="26sp"
         android:textStyle="bold"

@@ -26,7 +26,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 
-public class ScanHistory extends AppCompatActivity {
+public class ScanHistory extends BaseAppCompatActivity {
     DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReferenceFromUrl("https://treasurehunt-bb6e9-default-rtdb.firebaseio.com/");
     ArrayList<String> scanTimeLocationList = new ArrayList<>();
     ScanTimeLocation scanTimeLocation = new ScanTimeLocation();

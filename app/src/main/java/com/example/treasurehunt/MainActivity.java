@@ -9,8 +9,11 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
+import android.graphics.Color;
 import android.location.Location;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
+import android.text.style.BackgroundColorSpan;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -39,7 +42,7 @@ import com.journeyapps.barcodescanner.ScanOptions;
 
 import java.util.Objects;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends BaseAppCompatActivity {
 
     private static final int REQUEST_LOCATION_PERMISSION = 1;
     DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReferenceFromUrl("https://treasurehunt-bb6e9-default-rtdb.firebaseio.com/");
@@ -63,6 +66,19 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         ImageButton settingsBtn = findViewById(R.id.settingsBtn);
+
+        SharedPreferences sharedPreferences = getSharedPreferences("prefs", MODE_PRIVATE);
+        boolean darkModeActive = sharedPreferences.getBoolean("darkModeActive", false);
+
+        if (darkModeActive) {
+            leaderboardMainBtn.setImageDrawable(ContextCompat.getDrawable(MainActivity.this, R.drawable.white_leaderboard_icon));
+            settingsBtn.setImageDrawable(ContextCompat.getDrawable(MainActivity.this, R.drawable.white_settings_icon));
+        }
+        else {
+            leaderboardMainBtn.setImageDrawable(ContextCompat.getDrawable(MainActivity.this, R.drawable.leaderboard_icon));
+            settingsBtn.setImageDrawable(ContextCompat.getDrawable(MainActivity.this, R.drawable.settings_icon));
+        }
+
         settingsBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -82,9 +98,25 @@ public class MainActivity extends AppCompatActivity {
                             case R.id.contactScreen:
                                 startActivity(new Intent(MainActivity.this, Contact.class));
                                 return true;
-//                            case R.id.darkModeBtn:
-//                                Toast.makeText(this, "Dark Mode option", Toast.LENGTH_SHORT).show();
-//                                return true;
+                            case R.id.darkModeBtn:
+                                SharedPreferences sharedPreferences = getSharedPreferences("prefs", MODE_PRIVATE);
+                                SharedPreferences.Editor editor = sharedPreferences.edit();
+                                boolean darkModeActive = sharedPreferences.getBoolean("darkModeActive", false);
+                                if (darkModeActive) {
+                                    getWindow().getDecorView().setBackgroundColor(Color.WHITE);
+                                    leaderboardMainBtn.setImageDrawable(ContextCompat.getDrawable(MainActivity.this, R.drawable.leaderboard_icon));
+                                    settingsBtn.setImageDrawable(ContextCompat.getDrawable(MainActivity.this, R.drawable.settings_icon));
+                                    editor.putBoolean("darkModeActive", false);
+                                    editor.apply();
+                                }
+                                else {
+                                    getWindow().getDecorView().setBackgroundColor(Color.BLACK);
+                                    leaderboardMainBtn.setImageDrawable(ContextCompat.getDrawable(MainActivity.this, R.drawable.white_leaderboard_icon));
+                                    settingsBtn.setImageDrawable(ContextCompat.getDrawable(MainActivity.this, R.drawable.white_settings_icon));
+                                    editor.putBoolean("darkModeActive", true);
+                                    editor.apply();
+                                }
+                                return true;
                             default:
                                 return false;
                         }
