@@ -10,7 +10,6 @@
         android:layout_height="165dp"
         android:gravity="center"
         android:text="Scan History"
-        android:textColor="#7f03fc"
         android:textSize="26sp"
         android:textStyle="bold"/>
 

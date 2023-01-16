@@ -61,12 +61,5 @@ public class Leaderboard extends BaseAppCompatActivity {
 
             }
         });
-        ImageButton leaderboardBtn = findViewById(R.id.leaderboardBtn);
-        leaderboardBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(Leaderboard.this, MainActivity.class));
-            }
-        });
     }
 }

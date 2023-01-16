@@ -82,7 +82,7 @@ public class MainActivity extends BaseAppCompatActivity {
         settingsBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                PopupMenu settingsMenu = new PopupMenu(MainActivity.this, v);
+                PopupMenu settingsMenu = new PopupMenu(MainActivity.this, v, R.style.popupMenuDark);
                 MenuInflater inflater = getMenuInflater();
                 inflater.inflate(R.menu.menu, settingsMenu.getMenu());
                 settingsMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {

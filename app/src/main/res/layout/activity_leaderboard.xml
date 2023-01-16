@@ -10,10 +10,8 @@
         android:layout_height="165dp"
         android:gravity="center"
         android:text="Leaderboard"
-        android:textColor="#7f03fc"
         android:textSize="26sp"
-        android:textStyle="bold"
-        android:layout_marginTop="10dp"/>
+        android:textStyle="bold"/>
 
     <ListView
         android:layout_marginTop="110dp"
@@ -23,16 +21,5 @@
 
     </ListView>
 
-    <ImageButton
-        android:id="@+id/leaderboardBtn"
-        android:layout_width="93dp"
-        android:layout_height="85dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginStart="0dp"
-        android:layout_marginTop="0dp"
-        android:scaleType="fitCenter"
-        android:src="@drawable/leaderboard_icon"
-        android:background="@color/zxing_transparent"/>
 
 </RelativeLayout>
