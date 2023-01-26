@@ -1,6 +1,7 @@
 package com.example.treasurehunt;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -11,6 +12,7 @@ import android.widget.ListView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -33,8 +35,31 @@ public class Leaderboard extends BaseAppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_leaderboard);
 
+        ImageButton filterBtn = findViewById(R.id.filterBtn);
+        ImageButton homeBtn = findViewById(R.id.homeBtn);
+        homeBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(Leaderboard.this, MainActivity.class));
+            }
+        });
+
+        SharedPreferences sharedPreferences = getSharedPreferences("prefs", MODE_PRIVATE);
+        boolean darkModeActive = sharedPreferences.getBoolean("darkModeActive", false);
+
+        if (darkModeActive) {
+            homeBtn.setImageDrawable(ContextCompat.getDrawable(Leaderboard.this, R.drawable.white_home_icon));
+            filterBtn.setImageDrawable(ContextCompat.getDrawable(Leaderboard.this, R.drawable.white_filter_icon));
+        }
+        else {
+            homeBtn.setImageDrawable(ContextCompat.getDrawable(Leaderboard.this, R.drawable.home_icon));
+            filterBtn.setImageDrawable(ContextCompat.getDrawable(Leaderboard.this, R.drawable.filter_icon));
+        }
+
         ListView ListView = (ListView) findViewById(R.id.leaderboard);
         ArrayAdapter<String> adapter =  new ArrayAdapter<>(this, R.layout.userscores, R.id.userScores, list);;
+
+        boolean isAscending = false;
 
         databaseReference.child("users").addValueEventListener(new ValueEventListener() {
             @Override
@@ -54,6 +79,18 @@ public class Leaderboard extends BaseAppCompatActivity {
                     adapter.notifyDataSetChanged();
                 }
                 ListView.setAdapter(adapter);
+                filterBtn.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        if (!isAscending) {
+                            Collections.reverse(list);
+                        }
+                        else {
+                            Collections.sort(list);
+                        }
+                        adapter.notifyDataSetChanged();
+                    }
+                });
             }
 
             @Override

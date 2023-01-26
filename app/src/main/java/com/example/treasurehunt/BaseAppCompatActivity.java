@@ -18,7 +18,7 @@ public class BaseAppCompatActivity extends AppCompatActivity {
             getWindow().getDecorView().setBackgroundColor(Color.BLACK);
             setTheme(R.style.darkModeText);
         } else {
-            getWindow().getDecorView().setBackgroundColor(Color.WHITE);
+            getWindow().setBackgroundDrawableResource(R.drawable.preview16);
             setTheme(R.style.lightModeText);
         }
     }

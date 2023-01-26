@@ -103,7 +103,7 @@ public class MainActivity extends BaseAppCompatActivity {
                                 SharedPreferences.Editor editor = sharedPreferences.edit();
                                 boolean darkModeActive = sharedPreferences.getBoolean("darkModeActive", false);
                                 if (darkModeActive) {
-                                    getWindow().getDecorView().setBackgroundColor(Color.WHITE);
+                                    getWindow().setBackgroundDrawableResource(R.drawable.preview16);
                                     leaderboardMainBtn.setImageDrawable(ContextCompat.getDrawable(MainActivity.this, R.drawable.leaderboard_icon));
                                     settingsBtn.setImageDrawable(ContextCompat.getDrawable(MainActivity.this, R.drawable.settings_icon));
                                     editor.putBoolean("darkModeActive", false);
@@ -143,7 +143,6 @@ public class MainActivity extends BaseAppCompatActivity {
                     new String[]{Manifest.permission.ACCESS_COARSE_LOCATION}, REQUEST_LOCATION_PERMISSION);
         }
     }
-
 
     ActivityResultLauncher<ScanOptions> barLauncher = registerForActivityResult(new ScanContract(), result -> {
         if (result.getContents() != null) {
