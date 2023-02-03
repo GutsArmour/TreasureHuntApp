@@ -52,8 +52,7 @@ public class MainActivity extends BaseAppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Button button;
-        button = findViewById(R.id.button);
+        Button button = findViewById(R.id.button);
         button.setOnClickListener(v -> {
             scanQR();
         });
