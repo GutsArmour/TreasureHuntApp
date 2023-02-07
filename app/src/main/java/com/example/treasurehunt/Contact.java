@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 import com.google.firebase.database.DatabaseReference;
@@ -20,6 +21,14 @@ public class Contact extends BaseAppCompatActivity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_contact);
+
+        ImageButton homeBtn = findViewById(R.id.homeBtn);
+        homeBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(Contact.this, MainActivity.class));
+            }
+        });
 
         SharedPreferences sharedPreferences = getSharedPreferences("prefs", MODE_PRIVATE);
         String username = sharedPreferences.getString("username", "default value");

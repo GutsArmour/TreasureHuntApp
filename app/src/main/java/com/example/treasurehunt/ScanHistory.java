@@ -1,8 +1,11 @@
 package com.example.treasurehunt;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.ImageButton;
 import android.widget.ListView;
 
 import androidx.annotation.NonNull;
@@ -36,8 +39,15 @@ public class ScanHistory extends BaseAppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_scanhistory);
 
-        ListView ListView = (ListView) findViewById(R.id.scanHistory);
-        ArrayAdapter<String> adapter =  new ArrayAdapter<>(ScanHistory.this, R.layout.scantimelocation, R.id.scanTimeLocation, scanTimeLocationList);;
+        ImageButton homeBtn = findViewById(R.id.homeBtn);
+        homeBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(ScanHistory.this, MainActivity.class));
+            }
+        });
+
+        ArrayAdapter<String> adapter =  new ArrayAdapter<>(ScanHistory.this, R.layout.scantimelocation, R.id.scanTimeLocation, scanTimeLocationList);
 
         SharedPreferences sharedPreferences = getSharedPreferences("prefs", MODE_PRIVATE);
         final String username = sharedPreferences.getString("username", "default value");
@@ -48,13 +58,7 @@ public class ScanHistory extends BaseAppCompatActivity {
                 for (DataSnapshot childSnapshot : snapshot.getChildren()) {
                     scanTimeLocation = childSnapshot.getValue(ScanTimeLocation.class);
                     scanTimeLocationList.add(scanTimeLocation.getTimestamp().toString() + "," + scanTimeLocation.getLatitude() + "," + scanTimeLocation.getLongitude());
-//                    Long scanTime = childSnapshot.child("timestamp").getValue(Long.class);
-//                    Double scanLongitude = childSnapshot.child("longitude").getValue(Double.class);
-//                    Double scanLatitude = childSnapshot.child("latitude").getValue(Double.class);
-//                    scanTimeLocationList.add(scanTime + "," + scanLocation);
-                    adapter.notifyDataSetChanged();
                 }
-                ListView.setAdapter(adapter);
 
                 SupportMapFragment mapFragment = SupportMapFragment.newInstance();
                 getSupportFragmentManager().beginTransaction().replace(R.id.mapContainer, mapFragment).commit();
@@ -62,16 +66,19 @@ public class ScanHistory extends BaseAppCompatActivity {
                 mapFragment.getMapAsync(new OnMapReadyCallback() {
                     @Override
                     public void onMapReady(@NonNull GoogleMap googleMap) {
+                        float zoom = 18.0f;
+                        LatLng scanLocation = null;
+
                         for (String scanTimeLocation : scanTimeLocationList) {
                             String[] parts = scanTimeLocation.split(",");
                             String scanTime = parts[0];
                             double scanLatitude = Double.parseDouble(parts[1]);
                             double scanLongitude = Double.parseDouble(parts[2]);
 
-                            float zoom = 18.0f;
-                            LatLng scanLocation = new LatLng(scanLatitude, scanLongitude);
-
+                            scanLocation = new LatLng(scanLatitude, scanLongitude);
                             googleMap.addMarker(new MarkerOptions().position(scanLocation).title(scanTime));
+                        }
+                        if (scanLocation != null) {
                             googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(scanLocation, zoom));
                         }
                     }
