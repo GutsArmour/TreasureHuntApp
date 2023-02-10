@@ -1,5 +1,6 @@
 package com.example.treasurehunt;
 
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -17,7 +18,9 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 public class Register extends BaseAppCompatActivity {
+
     DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReferenceFromUrl("https://treasurehunt-bb6e9-default-rtdb.firebaseio.com/");
+
     @Override
     protected  void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

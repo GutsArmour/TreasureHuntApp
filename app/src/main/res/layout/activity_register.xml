@@ -12,7 +12,7 @@
         android:layout_height="165dp"
         android:gravity="center"
         android:text="Treasure Hunt"
-        android:textColor="#7f03fc"
+        android:textColor="@color/black"
         android:textSize="26sp"
         android:textStyle="bold" />
     <TextView
@@ -35,10 +35,11 @@
         android:maxLines="1"
         android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp"
+        android:layout_marginBottom="10dp"
         android:paddingStart="20dp"
         android:paddingEnd="0dp"
         android:background="@drawable/edittext_border"
-        android:textColorHint="@color/white"/>
+        android:textColorHint="#808080"/>
 
     <EditText
         android:layout_width="match_parent"
@@ -49,10 +50,11 @@
         android:maxLines="1"
         android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp"
+        android:layout_marginBottom="10dp"
         android:paddingStart="20dp"
         android:paddingEnd="0dp"
         android:background="@drawable/edittext_border"
-        android:textColorHint="@color/white"/>
+        android:textColorHint="#808080"/>
 
     <EditText
         android:layout_width="match_parent"
@@ -64,9 +66,10 @@
         android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp"
         android:paddingStart="20dp"
+        android:layout_marginBottom="10dp"
         android:paddingEnd="0dp"
         android:background="@drawable/edittext_border"
-        android:textColorHint="@color/white"/>
+        android:textColorHint="#808080"/>
 
     <EditText
         android:layout_width="match_parent"
@@ -78,9 +81,10 @@
         android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp"
         android:paddingStart="20dp"
+        android:layout_marginBottom="10dp"
         android:paddingEnd="0dp"
         android:background="@drawable/edittext_border"
-        android:textColorHint="@color/white"/>
+        android:textColorHint="#808080"/>
 
     <EditText
         android:layout_width="match_parent"
@@ -94,7 +98,7 @@
         android:paddingStart="20dp"
         android:paddingEnd="0dp"
         android:background="@drawable/edittext_border"
-        android:textColorHint="@color/white"/>
+        android:textColorHint="#808080"/>
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/registerBtn"
