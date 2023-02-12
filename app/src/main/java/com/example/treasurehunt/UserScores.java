@@ -5,6 +5,14 @@ public class UserScores {
     public UserScores() {
     }
 
+    public String getUsername() {
+        return username;
+    }
+    public void setUsername(String username) {
+        this.username = username;
+    }
+    private String username;
+
     public Long getPoints() {
         return points;
     }

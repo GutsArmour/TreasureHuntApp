@@ -34,15 +34,14 @@ import java.util.Map;
 public class Leaderboard extends BaseAppCompatActivity {
 
     DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReferenceFromUrl("https://treasurehunt-bb6e9-default-rtdb.firebaseio.com/");
-    ArrayList<String> list = new ArrayList<>();
     UserScores userScores = new UserScores();
     FirebaseAuth mAuth = Firebase.mAuth;
+    ArrayList<UserScores> userScoresArrayList = new ArrayList<>();
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_leaderboard);
-        ImageView userImage = findViewById(R.id.userImage);
 
         ImageButton filterBtn = findViewById(R.id.filterBtn);
         ImageButton homeBtn = findViewById(R.id.homeBtn);
@@ -66,7 +65,7 @@ public class Leaderboard extends BaseAppCompatActivity {
         }
 
         ListView ListView = (ListView) findViewById(R.id.leaderboard);
-        ArrayAdapter<String> adapter =  new ArrayAdapter<>(this, R.layout.userscores, R.id.userScores, list);
+        UserScoresAdapter userScoresAdapter = new UserScoresAdapter(Leaderboard.this, R.layout.userscores, userScoresArrayList);
 
         boolean isAscending = false;
 
@@ -75,33 +74,34 @@ public class Leaderboard extends BaseAppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for (DataSnapshot user : snapshot.getChildren()) {
                     userScores = user.getValue(UserScores.class);
-                    list.add(user.getKey() + ": " +  userScores.getPoints().toString());
-                    Glide.with(Leaderboard.this).load(userScores.getPfp()).into(userImage);
-                    Collections.sort(list, new Comparator<String>() {
-                        @Override
-                        public int compare(String o1, String o2) {
-                            int count = 1;
-                            // Split the strings on the comma separator and extract the points from the second part
-                            int points1 = Integer.parseInt(o1.split(": ")[1]);
-                            int points2 = Integer.parseInt(o2.split(": ")[1]);
-                            return points2 - points1;
-                        }
-                    });
-                    adapter.notifyDataSetChanged();
+                    String username = user.getKey();
+                    userScores.setUsername(username);
+                    userScoresArrayList.add(userScores);
+//                    Collections.sort(list, new Comparator<String>() {
+//                        @Override
+//                        public int compare(String o1, String o2) {
+//                            int count = 1;
+//                            // Split the strings on the comma separator and extract the points from the second part
+//                            int points1 = Integer.parseInt(o1.split(": ")[1]);
+//                            int points2 = Integer.parseInt(o2.split(": ")[1]);
+//                            return points2 - points1;
+//                        }
+//                    });
+                    userScoresAdapter.notifyDataSetChanged();
                 }
-                ListView.setAdapter(adapter);
-                filterBtn.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        if (!isAscending) {
-                            Collections.reverse(list);
-                        }
-                        else {
-                            Collections.sort(list);
-                        }
-                        adapter.notifyDataSetChanged();
-                    }
-                });
+                ListView.setAdapter(userScoresAdapter);
+//                filterBtn.setOnClickListener(new View.OnClickListener() {
+//                    @Override
+//                    public void onClick(View v) {
+//                        if (!isAscending) {
+//                            Collections.reverse(list);
+//                        }
+//                        else {
+//                            Collections.sort(list);
+//                        }
+//                        adapter.notifyDataSetChanged();
+//                    }
+//                });
             }
 
             @Override
