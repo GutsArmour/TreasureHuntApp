@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.ListView;
 
 import androidx.annotation.NonNull;
@@ -14,11 +15,15 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 
+import com.bumptech.glide.Glide;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -31,11 +36,13 @@ public class Leaderboard extends BaseAppCompatActivity {
     DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReferenceFromUrl("https://treasurehunt-bb6e9-default-rtdb.firebaseio.com/");
     ArrayList<String> list = new ArrayList<>();
     UserScores userScores = new UserScores();
+    FirebaseAuth mAuth = Firebase.mAuth;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_leaderboard);
+        ImageView userImage = findViewById(R.id.userImage);
 
         ImageButton filterBtn = findViewById(R.id.filterBtn);
         ImageButton homeBtn = findViewById(R.id.homeBtn);
@@ -59,7 +66,7 @@ public class Leaderboard extends BaseAppCompatActivity {
         }
 
         ListView ListView = (ListView) findViewById(R.id.leaderboard);
-        ArrayAdapter<String> adapter =  new ArrayAdapter<>(this, R.layout.userscores, R.id.userScores, list);;
+        ArrayAdapter<String> adapter =  new ArrayAdapter<>(this, R.layout.userscores, R.id.userScores, list);
 
         boolean isAscending = false;
 
@@ -69,6 +76,7 @@ public class Leaderboard extends BaseAppCompatActivity {
                 for (DataSnapshot user : snapshot.getChildren()) {
                     userScores = user.getValue(UserScores.class);
                     list.add(user.getKey() + ": " +  userScores.getPoints().toString());
+                    Glide.with(Leaderboard.this).load(userScores.getPfp()).into(userImage);
                     Collections.sort(list, new Comparator<String>() {
                         @Override
                         public int compare(String o1, String o2) {

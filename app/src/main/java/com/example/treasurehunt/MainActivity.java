@@ -2,6 +2,7 @@ package com.example.treasurehunt;
 
 import static android.Manifest.permission.ACCESS_COARSE_LOCATION;
 import static android.Manifest.permission.ACCESS_FINE_LOCATION;
+import static android.content.ContentValues.TAG;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
@@ -14,6 +15,7 @@ import android.location.Location;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.text.style.BackgroundColorSpan;
+import android.util.Log;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -31,7 +33,11 @@ import androidx.core.content.ContextCompat;
 
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
+import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -46,6 +52,7 @@ public class MainActivity extends BaseAppCompatActivity {
 
     private static final int REQUEST_LOCATION_PERMISSION = 1;
     DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReferenceFromUrl("https://treasurehunt-bb6e9-default-rtdb.firebaseio.com/");
+    FirebaseAuth mAuth = Firebase.mAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,6 +63,14 @@ public class MainActivity extends BaseAppCompatActivity {
         button.setOnClickListener(v -> {
             scanQR();
         });
+
+        FirebaseUser user = mAuth.getCurrentUser();
+        if (user != null) {
+            //dp
+        }
+        else {
+            signInAnonymously();
+        }
 
         ImageButton leaderboardMainBtn = findViewById(R.id.leaderboardMainBtn);
         leaderboardMainBtn.setOnClickListener(new View.OnClickListener() {
@@ -122,6 +137,20 @@ public class MainActivity extends BaseAppCompatActivity {
                     }
                 });
                 settingsMenu.show();
+            }
+        });
+    }
+
+    private void signInAnonymously() {
+        mAuth.signInAnonymously().addOnSuccessListener(new OnSuccessListener<AuthResult>() {
+            @Override
+            public void onSuccess(AuthResult authResult) {
+                Toast.makeText(MainActivity.this, "Login success", Toast.LENGTH_SHORT).show();
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Log.e(TAG, "Failed signInAnonymously");
             }
         });
     }
