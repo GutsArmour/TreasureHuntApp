@@ -77,31 +77,32 @@ public class Leaderboard extends BaseAppCompatActivity {
                     String username = user.getKey();
                     userScores.setUsername(username);
                     userScoresArrayList.add(userScores);
-//                    Collections.sort(list, new Comparator<String>() {
-//                        @Override
-//                        public int compare(String o1, String o2) {
-//                            int count = 1;
-//                            // Split the strings on the comma separator and extract the points from the second part
-//                            int points1 = Integer.parseInt(o1.split(": ")[1]);
-//                            int points2 = Integer.parseInt(o2.split(": ")[1]);
-//                            return points2 - points1;
-//                        }
-//                    });
+                    Collections.sort(userScoresArrayList, new Comparator<UserScores>() {
+                        @Override
+                        public int compare(UserScores user1, UserScores user2) {
+                            return Long.compare(user2.getPoints(), user1.getPoints());
+                        }
+                    });
                     userScoresAdapter.notifyDataSetChanged();
                 }
                 ListView.setAdapter(userScoresAdapter);
-//                filterBtn.setOnClickListener(new View.OnClickListener() {
-//                    @Override
-//                    public void onClick(View v) {
-//                        if (!isAscending) {
-//                            Collections.reverse(list);
-//                        }
-//                        else {
-//                            Collections.sort(list);
-//                        }
-//                        adapter.notifyDataSetChanged();
-//                    }
-//                });
+                filterBtn.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        if (!isAscending) {
+                            Collections.reverse(userScoresArrayList);
+                        }
+                        else {
+                            Collections.sort(userScoresArrayList, new Comparator<UserScores>() {
+                                @Override
+                                public int compare(UserScores user1, UserScores user2) {
+                                    return Long.compare(user2.getPoints(), user1.getPoints());
+                                }
+                            });
+                        }
+                        userScoresAdapter.notifyDataSetChanged();
+                    }
+                });
             }
 
             @Override
