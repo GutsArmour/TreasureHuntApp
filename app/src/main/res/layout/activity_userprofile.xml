@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <ImageButton
+            android:id="@+id/homeBtn"
+            android:layout_width="85dp"
+            android:layout_height="85dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="0dp"
+            android:layout_marginTop="0dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/home_icon"
+            android:background="@color/zxing_transparent"/>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="250dp">
+
+            <ImageView
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:id="@+id/userprofileImage"
+                android:layout_centerInParent="true"
+                android:src="@drawable/default_profile_photo"/>
+        </RelativeLayout>
+        
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="15dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/userprofileUsername"
+                android:layout_marginStart="30dp"
+                android:textSize="18sp"
+                android:text="grr"
+                android:layout_marginBottom="2dp"/>
+            <View
+                android:layout_width="wrap_content"
+                android:layout_height="1dp"
+                android:layout_below="@id/userprofileUsername"
+                android:background="@color/black"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/userprofileFullname"
+                android:layout_marginStart="30dp"
+                android:layout_below="@id/userprofileUsername"
+                android:textSize="18sp"
+                android:text="username"
+                android:layout_marginBottom="1dp"/>
+            <View
+                android:layout_width="wrap_content"
+                android:layout_height="1dp"
+                android:layout_below="@id/userprofileFullname"
+                android:background="@color/black"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/userprofileEmail"
+                android:layout_marginStart="30dp"
+                android:layout_below="@id/userprofileFullname"
+                android:textSize="18sp"
+                android:text="fullname"
+                android:layout_marginBottom="1dp"/>
+            <View
+                android:layout_width="wrap_content"
+                android:layout_height="1dp"
+                android:layout_below="@id/userprofileEmail"
+                android:background="@color/black"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/userprofilePoints"
+                android:layout_marginStart="30dp"
+                android:layout_below="@id/userprofileEmail"
+                android:textSize="18sp"
+                android:text="Points"
+                android:layout_marginBottom="1dp"/>
+            <View
+                android:layout_width="wrap_content"
+                android:layout_height="1dp"
+                android:layout_below="@id/userprofilePoints"
+                android:background="@color/black"/>
+        </RelativeLayout>
+
+    </LinearLayout>
+
+</ScrollView>

@@ -2,11 +2,14 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <item android:id="@+id/tutorialScreen"
-        android:title="@string/tutorial"
+    <item android:id="@+id/userProfileScreen"
+        android:title="@string/userprofile"
         app:showAsAction="never"/>
     <item android:id="@+id/scanHistoryScreen"
         android:title="@string/scan_history"
+        app:showAsAction="never"/>
+    <item android:id="@+id/tutorialScreen"
+        android:title="@string/tutorial"
         app:showAsAction="never"/>
     <item android:id="@+id/contactScreen"
         android:title="@string/contact"

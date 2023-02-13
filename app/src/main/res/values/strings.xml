@@ -2,6 +2,7 @@
     <string name="app_name">TreasureHunt</string>
     <string name="leaderboardInfo">%s\nPoints: %d</string>
     <string name="title_activity_maps">MapsActivity</string>
+    <string name="userprofile">Profile</string>
     <string name="tutorial">Tutorial</string>
     <string name="scan_history">Scan History</string>
     <string name="contact">Contact</string>

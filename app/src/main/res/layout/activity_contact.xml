@@ -46,16 +46,18 @@
         android:layout_marginEnd="20dp"
         android:layout_marginBottom="10dp"
         android:background="@drawable/edittext_border"
-        android:textColorHint="#808080"/>
+        android:textColorHint="#808080"
+        android:padding="3dp" />
 
     <EditText
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="200dp"
         android:id="@+id/feedback"
         android:layout_gravity="center"
         android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp"
         android:hint="Feedback"
+        android:padding="3dp"
         android:background="@drawable/edittext_border"
         android:textColorHint="#808080"/>
     <Button

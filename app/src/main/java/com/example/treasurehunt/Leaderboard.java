@@ -77,7 +77,7 @@ public class Leaderboard extends BaseAppCompatActivity {
                     String username = user.getKey();
                     userScores.setUsername(username);
                     userScoresArrayList.add(userScores);
-                    Collections.sort(userScoresArrayList, new Comparator<UserScores>() {
+                    userScoresArrayList.sort(new Comparator<UserScores>() {
                         @Override
                         public int compare(UserScores user1, UserScores user2) {
                             return Long.compare(user2.getPoints(), user1.getPoints());
@@ -93,7 +93,7 @@ public class Leaderboard extends BaseAppCompatActivity {
                             Collections.reverse(userScoresArrayList);
                         }
                         else {
-                            Collections.sort(userScoresArrayList, new Comparator<UserScores>() {
+                            userScoresArrayList.sort(new Comparator<UserScores>() {
                                 @Override
                                 public int compare(UserScores user1, UserScores user2) {
                                     return Long.compare(user2.getPoints(), user1.getPoints());

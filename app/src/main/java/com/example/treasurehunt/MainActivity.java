@@ -103,6 +103,9 @@ public class MainActivity extends BaseAppCompatActivity {
                     @Override
                     public boolean onMenuItemClick(MenuItem item) {
                         switch (item.getItemId()) {
+                            case R.id.userProfileScreen:
+                                startActivity(new Intent(MainActivity.this, UserProfile.class));
+                                return true;
                             case R.id.tutorialScreen:
                                 startActivity(new Intent(MainActivity.this, Tutorial.class));
                                 return true;
