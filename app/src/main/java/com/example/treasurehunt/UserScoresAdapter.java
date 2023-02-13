@@ -29,30 +29,25 @@ public class UserScoresAdapter extends ArrayAdapter<UserScores> {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         ViewHolder viewHolder;
-
         if (convertView == null) {
             convertView = LayoutInflater.from(mContext).inflate(mResource, parent, false);
             viewHolder = new ViewHolder();
-            viewHolder.pfpImageView = convertView.findViewById(R.id.userImage);
-            viewHolder.usernameTextView = convertView.findViewById(R.id.userNameL);
-            viewHolder.pointsTextView = convertView.findViewById(R.id.userScores);
+            viewHolder.pfpView = convertView.findViewById(R.id.userImage);
+            viewHolder.leaderBoardInfoView = convertView.findViewById(R.id.leaderboardInfo);
             convertView.setTag(viewHolder);
-        } else {
+        }
+        else {
             viewHolder = (ViewHolder) convertView.getTag();
         }
-
         UserScores userScores = mUserScoresList.get(position);
-
-        Glide.with(mContext).load(userScores.getPfp()).into(viewHolder.pfpImageView);
-
-        viewHolder.pointsTextView.setText(String.valueOf(userScores.getPoints()));
-        viewHolder.usernameTextView.setText(String.valueOf(userScores.getUsername()));
+        Glide.with(mContext).load(userScores.getPfp()).into(viewHolder.pfpView);
+        viewHolder.leaderBoardInfoView.setText(String.format(mContext.getString(R.string.leaderboardInfo), userScores.getUsername(), userScores.getPoints()));
 
         return convertView;
     }
 
     static class ViewHolder {
-        ImageView pfpImageView;
-        TextView pointsTextView, usernameTextView;
+        ImageView pfpView;
+        TextView leaderBoardInfoView;
     }
 }
