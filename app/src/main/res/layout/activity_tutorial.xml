@@ -27,7 +27,8 @@
             android:text="Tutorial and Help"
             android:textAlignment="center"
             android:textSize="26sp"
-            android:textStyle="bold"/>
+            android:textStyle="bold"
+            android:textColor="@color/brown"/>
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -40,7 +41,8 @@
             android:text="How to Scan QR Codes"
             android:textSize="16sp"
             android:textStyle="bold"
-            android:textAlignment="center"/>
+            android:textAlignment="center"
+            android:textColor="@color/brown"/>
 
         <TextView
             android:layout_width="match_parent"
@@ -50,7 +52,8 @@
             android:paddingTop="3dp"
             android:paddingBottom="3dp"
             android:paddingLeft="10dp"
-            android:paddingRight="10dp"/>
+            android:paddingRight="10dp"
+            android:textColor="@color/brown"/>
     </LinearLayout>
 
     <LinearLayout
@@ -65,7 +68,8 @@
             android:text="Leaderboard"
             android:textSize="16sp"
             android:textStyle="bold"
-            android:textAlignment="center"/>
+            android:textAlignment="center"
+            android:textColor="@color/brown"/>
 
         <TextView
             android:layout_width="match_parent"
@@ -75,7 +79,8 @@
             android:paddingTop="3dp"
             android:paddingBottom="3dp"
             android:paddingLeft="10dp"
-            android:paddingRight="10dp"/>
+            android:paddingRight="10dp"
+            android:textColor="@color/brown"/>
     </LinearLayout>
 
     <LinearLayout
@@ -90,7 +95,8 @@
             android:text="How to Gain Points"
             android:textSize="16sp"
             android:textStyle="bold"
-            android:textAlignment="center"/>
+            android:textAlignment="center"
+            android:textColor="@color/brown"/>
 
         <TextView
             android:layout_width="match_parent"
@@ -100,7 +106,8 @@
             android:paddingTop="3dp"
             android:paddingBottom="3dp"
             android:paddingLeft="10dp"
-            android:paddingRight="10dp"/>
+            android:paddingRight="10dp"
+            android:textColor="@color/brown"/>
     </LinearLayout>
 
     <LinearLayout
@@ -115,7 +122,8 @@
             android:text="Scan History"
             android:textSize="16sp"
             android:textStyle="bold"
-            android:textAlignment="center"/>
+            android:textAlignment="center"
+            android:textColor="@color/brown"/>
 
         <TextView
             android:layout_width="match_parent"
@@ -125,7 +133,8 @@
             android:paddingTop="3dp"
             android:paddingBottom="3dp"
             android:paddingLeft="10dp"
-            android:paddingRight="10dp"/>
+            android:paddingRight="10dp"
+            android:textColor="@color/brown"/>
     </LinearLayout>
 
     <LinearLayout
@@ -140,7 +149,8 @@
             android:text="Dark/Light Mode"
             android:textSize="16sp"
             android:textStyle="bold"
-            android:textAlignment="center"/>
+            android:textAlignment="center"
+            android:textColor="@color/brown"/>
 
         <TextView
             android:layout_width="match_parent"
@@ -150,7 +160,8 @@
             android:paddingTop="3dp"
             android:paddingBottom="3dp"
             android:paddingLeft="10dp"
-            android:paddingRight="10dp"/>
+            android:paddingRight="10dp"
+            android:textColor="@color/brown"/>
     </LinearLayout>
 
     <LinearLayout
@@ -165,7 +176,8 @@
             android:text="Contact"
             android:textSize="16sp"
             android:textStyle="bold"
-            android:textAlignment="center"/>
+            android:textAlignment="center"
+            android:textColor="@color/brown"/>
 
         <TextView
             android:layout_width="match_parent"
@@ -175,7 +187,8 @@
             android:paddingTop="3dp"
             android:paddingBottom="3dp"
             android:paddingLeft="10dp"
-            android:paddingRight="10dp"/>
+            android:paddingRight="10dp"
+            android:textColor="@color/brown"/>
     </LinearLayout>
     </LinearLayout>
 </ScrollView>

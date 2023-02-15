@@ -44,12 +44,14 @@
                 android:layout_marginStart="30dp"
                 android:textSize="18sp"
                 android:text="grr"
-                android:layout_marginBottom="2dp"/>
+                android:layout_marginBottom="2dp"
+                android:textColor="@color/brown"/>
             <View
                 android:layout_width="wrap_content"
                 android:layout_height="1dp"
                 android:layout_below="@id/userprofileUsername"
-                android:background="@color/black"/>
+                android:background="@color/black"
+                android:textColor="@color/brown"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -58,12 +60,14 @@
                 android:layout_below="@id/userprofileUsername"
                 android:textSize="18sp"
                 android:text="username"
-                android:layout_marginBottom="1dp"/>
+                android:layout_marginBottom="1dp"
+                android:textColor="@color/brown"/>
             <View
                 android:layout_width="wrap_content"
                 android:layout_height="1dp"
                 android:layout_below="@id/userprofileFullname"
-                android:background="@color/black"/>
+                android:background="@color/black"
+                android:textColor="@color/brown"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -72,12 +76,14 @@
                 android:layout_below="@id/userprofileFullname"
                 android:textSize="18sp"
                 android:text="fullname"
-                android:layout_marginBottom="1dp"/>
+                android:layout_marginBottom="1dp"
+                android:textColor="@color/brown"/>
             <View
                 android:layout_width="wrap_content"
                 android:layout_height="1dp"
                 android:layout_below="@id/userprofileEmail"
-                android:background="@color/black"/>
+                android:background="@color/black"
+                android:textColor="@color/brown"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -86,12 +92,14 @@
                 android:layout_below="@id/userprofileEmail"
                 android:textSize="18sp"
                 android:text="Points"
-                android:layout_marginBottom="1dp"/>
+                android:layout_marginBottom="1dp"
+                android:textColor="@color/brown"/>
             <View
                 android:layout_width="wrap_content"
                 android:layout_height="1dp"
                 android:layout_below="@id/userprofilePoints"
-                android:background="@color/black"/>
+                android:background="@color/black"
+                android:textColor="@color/brown"/>
         </RelativeLayout>
 
         <Button

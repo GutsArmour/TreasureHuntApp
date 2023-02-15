@@ -13,7 +13,7 @@
         android:layout_height="165dp"
         android:gravity="center"
         android:text="Treasure Hunt"
-        android:textColor="@color/black"
+        android:textColor="@color/brown"
         android:textSize="26sp"
         android:textStyle="bold"/>
 

@@ -120,7 +120,8 @@ public class MainActivity extends BaseAppCompatActivity {
                                 SharedPreferences.Editor editor = sharedPreferences.edit();
                                 boolean darkModeActive = sharedPreferences.getBoolean("darkModeActive", false);
                                 if (darkModeActive) {
-                                    getWindow().setBackgroundDrawableResource(R.drawable.preview16);
+                                    int peachColor = ContextCompat.getColor(MainActivity.this, R.color.peach);
+                                    getWindow().getDecorView().setBackgroundColor(peachColor);
                                     leaderboardMainBtn.setImageDrawable(ContextCompat.getDrawable(MainActivity.this, R.drawable.leaderboard_icon));
                                     settingsBtn.setImageDrawable(ContextCompat.getDrawable(MainActivity.this, R.drawable.settings_icon));
                                     editor.putBoolean("darkModeActive", false);

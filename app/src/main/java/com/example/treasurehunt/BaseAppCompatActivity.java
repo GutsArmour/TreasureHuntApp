@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.widget.PopupMenu;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
 public class BaseAppCompatActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
@@ -18,7 +19,8 @@ public class BaseAppCompatActivity extends AppCompatActivity {
             getWindow().getDecorView().setBackgroundColor(Color.BLACK);
             setTheme(R.style.darkModeText);
         } else {
-            getWindow().setBackgroundDrawableResource(R.drawable.preview16);
+            int peachColor = ContextCompat.getColor(this, R.color.peach);
+            getWindow().getDecorView().setBackgroundColor(peachColor);
             setTheme(R.style.lightModeText);
         }
     }

@@ -14,7 +14,8 @@
         android:gravity="center"
         android:text="Leaderboard"
         android:textSize="26sp"
-        android:textStyle="bold"/>
+        android:textStyle="bold"
+        android:textColor="@color/brown"/>
 
     <ListView
         android:layout_marginTop="110dp"
