@@ -4,7 +4,7 @@
 
     <item android:id="@+id/userProfileScreen"
         android:title="@string/userprofile"
-        app:showAsAction="never"/>
+        app:showAsAction="never" />
     <item android:id="@+id/scanHistoryScreen"
         android:title="@string/scan_history"
         app:showAsAction="never"/>

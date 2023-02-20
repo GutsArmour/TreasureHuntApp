@@ -14,7 +14,9 @@ import android.graphics.Color;
 import android.location.Location;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.text.SpannableString;
 import android.text.style.BackgroundColorSpan;
+import android.text.style.ForegroundColorSpan;
 import android.util.Log;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -96,9 +98,15 @@ public class MainActivity extends BaseAppCompatActivity {
         settingsBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                PopupMenu settingsMenu = new PopupMenu(MainActivity.this, v, R.style.popupMenuDark);
+                PopupMenu settingsMenu = new PopupMenu(MainActivity.this, v);
                 MenuInflater inflater = getMenuInflater();
                 inflater.inflate(R.menu.menu, settingsMenu.getMenu());
+                for (int i = 0; i < settingsMenu.getMenu().size(); i++) {
+                    MenuItem menuItem = settingsMenu.getMenu().getItem(i);
+                    SpannableString spannableString = new SpannableString(menuItem.getTitle().toString());
+                    spannableString.setSpan(new ForegroundColorSpan(Color.BLACK), 0, spannableString.length(), 0); // replace with your desired text color
+                    menuItem.setTitle(spannableString);
+                }
                 settingsMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
                     @Override
                     public boolean onMenuItemClick(MenuItem item) {
