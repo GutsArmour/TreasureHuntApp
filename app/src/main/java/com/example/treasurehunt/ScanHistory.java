@@ -11,6 +11,7 @@ import android.widget.ListView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -46,10 +47,18 @@ public class ScanHistory extends BaseAppCompatActivity {
                 startActivity(new Intent(ScanHistory.this, MainActivity.class));
             }
         });
+        SharedPreferences sharedPreferences = getSharedPreferences("prefs", MODE_PRIVATE);
+        boolean darkModeActive = sharedPreferences.getBoolean("darkModeActive", false);
+
+        if (darkModeActive) {
+            homeBtn.setImageDrawable(ContextCompat.getDrawable(ScanHistory.this, R.drawable.white_home_icon));
+        }
+        else {
+            homeBtn.setImageDrawable(ContextCompat.getDrawable(ScanHistory.this, R.drawable.home_icon));
+        }
 
         ArrayAdapter<String> adapter =  new ArrayAdapter<>(ScanHistory.this, R.layout.scantimelocation, R.id.scanTimeLocation, scanTimeLocationList);
 
-        SharedPreferences sharedPreferences = getSharedPreferences("prefs", MODE_PRIVATE);
         final String username = sharedPreferences.getString("username", "default value");
 
         databaseReference.child("users").child(username).child("scan_history").addValueEventListener(new ValueEventListener() {

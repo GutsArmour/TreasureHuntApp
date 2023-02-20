@@ -8,8 +8,7 @@
         android:textSize="0sp"
         android:textStyle="bold"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textColor="@color/brown"/>
+        android:layout_height="wrap_content"/>
 
     <FrameLayout
         android:id="@+id/mapContainer"
