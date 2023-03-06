@@ -25,74 +25,80 @@
             android:layout_height="250dp">
 
             <ImageView
-                android:layout_width="150dp"
-                android:layout_height="150dp"
+                android:layout_width="300dp"
+                android:layout_height="300dp"
                 android:id="@+id/userprofileImage"
                 android:layout_centerInParent="true"
                 android:src="@drawable/default_profile_photo"/>
         </RelativeLayout>
-        
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_margin="15dp">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/userprofileUsername"
-                android:layout_marginStart="30dp"
-                android:textSize="18sp"
-                android:text="grr"
-                android:layout_marginBottom="2dp"/>
+        <TableLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="20dp"
+            android:paddingHorizontal="10dp">
+
+            <TableRow>
+                <TextView
+                    android:textSize="18sp"
+                    android:text="Username:"
+                    android:textStyle="bold" />
+                <TextView
+                    android:textSize="18sp"
+                    android:paddingLeft="10dp"
+                    android:id="@+id/userprofileUsername"
+                    android:text="@{viewModel.username}" />
+            </TableRow>
             <View
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:layout_below="@id/userprofileUsername"
-                android:background="@color/black"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/userprofileFullname"
-                android:layout_marginStart="30dp"
-                android:layout_below="@id/userprofileUsername"
-                android:textSize="18sp"
-                android:text="username"
-                android:layout_marginBottom="1dp"/>
+                android:background="#442C2E"/>
+            <TableRow>
+                <TextView
+                    android:textSize="18sp"
+                    android:text="Full Name:"
+                    android:textStyle="bold" />
+                <TextView
+                    android:textSize="18sp"
+                    android:paddingLeft="10dp"
+                    android:id="@+id/userprofileFullname"
+                    android:text="@{viewModel.fullname}" />
+            </TableRow>
             <View
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:layout_below="@id/userprofileFullname"
-                android:background="@color/black"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/userprofileEmail"
-                android:layout_marginStart="30dp"
-                android:layout_below="@id/userprofileFullname"
-                android:textSize="18sp"
-                android:text="fullname"
-                android:layout_marginBottom="1dp"/>
+                android:background="#442C2E"/>
+            <TableRow>
+                <TextView
+                    android:textSize="18sp"
+                    android:text="Email:"
+                    android:textStyle="bold" />
+                <TextView
+                    android:textSize="18sp"
+                    android:paddingLeft="10dp"
+                    android:id="@+id/userprofileEmail"
+                    android:text="@{viewModel.email}" />
+            </TableRow>
             <View
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:layout_below="@id/userprofileEmail"
-                android:background="@color/black"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/userprofilePoints"
-                android:layout_marginStart="30dp"
-                android:layout_below="@id/userprofileEmail"
-                android:textSize="18sp"
-                android:text="Points"
-                android:layout_marginBottom="1dp"/>
+                android:background="#442C2E"/>
+            <TableRow>
+                <TextView
+                    android:textSize="18sp"
+                    android:text="Points:"
+                    android:textStyle="bold" />
+                <TextView
+                    android:textSize="18sp"
+                    android:paddingLeft="10dp"
+                    android:id="@+id/userprofilePoints"
+                    android:text="@{viewModel.points}" />
+            </TableRow>
             <View
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:layout_below="@id/userprofilePoints"
-                android:background="@color/black"/>
-        </RelativeLayout>
+                android:background="#442C2E"/>
+        </TableLayout>
 
         <Button
             android:layout_width="wrap_content"

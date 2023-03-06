@@ -177,5 +177,29 @@
             android:paddingLeft="10dp"
             android:paddingRight="10dp"/>
     </LinearLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="20dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="User Profile"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:textAlignment="center"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="The User Profile page lets you visit your profile and view your details such as username, name, email, and points. In here, you can change your profile by simply clicking on the picture icon which will allow you to open a picture from your galler."
+                android:textAlignment="center"
+                android:paddingTop="3dp"
+                android:paddingBottom="3dp"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"/>
+        </LinearLayout>
     </LinearLayout>
 </ScrollView>

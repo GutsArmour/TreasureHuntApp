@@ -91,10 +91,10 @@ public class UserProfile extends BaseAppCompatActivity{
                 SharedPreferences sharedPreferences = getSharedPreferences("prefs", MODE_PRIVATE);
                 final String username = sharedPreferences.getString("username", "default value");
                 if (snapshot.hasChild(username)) {
-                    userName.setText("Username: " + username);
-                    userFullname.setText("Full Name: " + snapshot.child(username).child("fullname").getValue(String.class));
-                    userEmail.setText("Email: " + snapshot.child(username).child("email").getValue(String.class));
-                    userPoints.setText("Points: " + snapshot.child(username).child("points").getValue(Long.class).toString());
+                    userName.setText(username);
+                    userFullname.setText(snapshot.child(username).child("fullname").getValue(String.class));
+                    userEmail.setText(snapshot.child(username).child("email").getValue(String.class));
+                    userPoints.setText(snapshot.child(username).child("points").getValue(Long.class).toString());
                     Glide.with(UserProfile.this).load(snapshot.child(username).child("pfp").getValue(String.class)).into(userPfp);
                 }
             }
