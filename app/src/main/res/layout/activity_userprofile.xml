@@ -107,6 +107,14 @@
             android:id="@+id/saveProfileBtn"
             android:text="Save"
             android:layout_marginTop="30dp"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:id="@+id/LogoutBtn"
+            android:text="Log Out"
+            android:layout_marginTop="30dp"/>
     </LinearLayout>
 
 </ScrollView>

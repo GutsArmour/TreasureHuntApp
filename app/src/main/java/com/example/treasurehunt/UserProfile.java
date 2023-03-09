@@ -45,6 +45,11 @@ public class UserProfile extends BaseAppCompatActivity{
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        SharedPreferences sharedPreferences = getSharedPreferences("prefs", MODE_PRIVATE);
+        username = sharedPreferences.getString("username", "default value");
+        Boolean isLoggedIn = sharedPreferences.getBoolean("isLoggedIn", false);
+        boolean darkModeActive = sharedPreferences.getBoolean("darkModeActive", false);
+
         setContentView(R.layout.activity_userprofile);
         ImageButton homeBtn = findViewById(R.id.homeBtn);
 
@@ -54,11 +59,23 @@ public class UserProfile extends BaseAppCompatActivity{
         TextView userEmail = findViewById(R.id.userprofileEmail);
         TextView userPoints = findViewById(R.id.userprofilePoints);
         Button saveProfile = findViewById(R.id.saveProfileBtn);
+        Button Logout = findViewById(R.id.LogoutBtn);
 
         userPfp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 gallery.launch("image/*");
+            }
+        });
+
+        Logout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                SharedPreferences.Editor editor = sharedPreferences.edit();
+                editor.putBoolean("isLoggedIn", false);
+                sharedPreferences.edit().remove("username").apply();
+                editor.apply();
+                startActivity(new Intent(UserProfile.this, Login.class));
             }
         });
 
@@ -75,9 +92,6 @@ public class UserProfile extends BaseAppCompatActivity{
                 startActivity(new Intent(UserProfile.this, MainActivity.class));
             }
         });
-        SharedPreferences sharedPreferences = getSharedPreferences("prefs", MODE_PRIVATE);
-        username = sharedPreferences.getString("username", "default value");
-        boolean darkModeActive = sharedPreferences.getBoolean("darkModeActive", false);
 
         if (darkModeActive) {
             homeBtn.setImageDrawable(ContextCompat.getDrawable(UserProfile.this, R.drawable.white_home_icon));
