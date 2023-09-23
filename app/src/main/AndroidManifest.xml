@@ -27,7 +27,7 @@
         -->
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="AIzaSyDUdP9CkQVwN_gLx0N9Gv1rPXk1A6X3AT4" />
+            android:value="## />
 
         <activity android:name=".ScanHistory"/>
         <activity android:name=".UserProfile"/>
